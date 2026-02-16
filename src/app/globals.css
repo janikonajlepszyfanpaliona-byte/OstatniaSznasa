@@ -1,0 +1,715 @@
+
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ==================== ANTI-DRAG & STABILITY STYLES ==================== */
+
+/* Prevent image dragging and selection across the entire page */
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Prevent dragging on buttons and interactive elements */
+button, a, [role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  -webkit-user-drag: none;
+}
+
+/* Prevent text selection on UI elements */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Prevent dragging on sections and containers */
+section, .section, [class*="container"], [class*="grid"] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Lock layout - prevent any accidental movement */
+html, body {
+  overflow-x: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+/* ==================== ANIMATION KEYFRAMES ==================== */
+
+@keyframes shimmer {
+  0%, 100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ==================== PREMIUM ENTRANCE ANIMATIONS ==================== */
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes shimmerBg {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floatingParticles {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes ambientGlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.1);
+    opacity: 0.15;
+  }
+}
+
+/* ==================== SECTION REVEAL ANIMATIONS ==================== */
+
+.animate-section-reveal {
+  animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.animate-section-reveal-left {
+  animation: slideInLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.animate-section-reveal-right {
+  animation: slideInRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.animate-section-scale {
+  animation: scaleIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+/* ==================== STAGGER DELAYS ==================== */
+
+.delay-1 { animation-delay: 0ms; }
+.delay-2 { animation-delay: 120ms; }
+.delay-3 { animation-delay: 240ms; }
+.delay-4 { animation-delay: 360ms; }
+.delay-5 { animation-delay: 480ms; }
+
+/* ==================== HOVER EFFECTS ==================== */
+
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+}
+
+.hover-glow {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.hover-scale {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="5" fill="white" stroke="white" stroke-width="1"/><circle cx="16" cy="16" r="8" fill="none" stroke="white" stroke-width="0.5" opacity="0.5"/></svg>') 16 16, auto;
+}
+
+a, button {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="6" fill="white" stroke="white" stroke-width="1"/></svg>') 16 16, pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==================== KEYFRAMES - SCROLL ANIMATIONS ==================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pageEnterAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageEnterAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ==================== HOVER ANIMATIONS (BEZ POWIĘKSZANIA TEKSTU) ==================== */
+
+@keyframes underlineExpand {
+  from {
+    width: 0;
+    left: 0;
+  }
+  to {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes smoothFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==================== ANIMATION CLASSES ==================== */
+
+.animate-fade-in-up {
+  animation: smoothFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: smoothSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-float {
+  animation: float 3.5s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
+
+.animate-slide-up {
+  animation: smoothFadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulse 2s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ==================== HOVER EFFECTS (SAFE - BEZ ZMIANY ROZMIARU) ==================== */
+
+.hover-text-animate {
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-text-animate:hover {
+  color: #ffffff;
+}
+
+.hover-border-glow {
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+  transform-origin: center;
+  will-change: transform, box-shadow;
+}
+
+.hover-border-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: scale(1.01);
+}
+
+.hover-lift {
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  will-change: transform, box-shadow;
+}
+
+.hover-lift:hover {
+  transform: scale(1.03);
+  box-shadow: 0 25px 60px rgba(255, 255, 255, 0.12);
+}
+
+.hover-bg-animate {
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-bg-animate:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.hover-opacity {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.8;
+}
+
+.hover-opacity:hover {
+  opacity: 1;
+}
+
+.hover-icon-bounce {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.hover-icon-bounce:hover {
+  transform: scale(1.03);
+}
+
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ==================== CARD STYLES ==================== */
+
+.card-dark {
+  background: #0a0a0a;
+  border: 1px solid #333333;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-dark:hover {
+  border-color: #666666;
+  background: #1a1a1a;
+}
+
+/* ==================== TEXT STYLES (BEZ SKALOWANIA) ==================== */
+
+.text-highlight {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: letter-spacing 0.3s ease;
+}
+
+.text-highlight:hover {
+  letter-spacing: 0.08em;
+}
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ==================== IMAGE HOVER ==================== */
+
+.image-hover {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-hover:hover {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* ==================== BUTTON STYLES ==================== */
+
+.btn-primary {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  border: 1px solid #ffffff;
+  will-change: transform, box-shadow;
+}
+
+.btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+.btn-primary-filled {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background-color, box-shadow;
+}
+
+.btn-primary-filled:hover {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 15px 50px rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
+}
+
+/* ==================== PAGE CONTENT - NO ANIMATIONS ==================== */
+
+/* ==================== SCROLL PERFORMANCE (60 FPS) ==================== */
+
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* ==================== PREMIUM PORTFOLIO CARD ANIMATIONS ==================== */
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes cardHoverLift {
+  from {
+    transform: translateY(0);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  to {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.08);
+  }
+}
+
+@keyframes smoothImageZoom {
+  from {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  to {
+    transform: scale(1.08);
+    filter: brightness(1.05);
+  }
+}
+
+.portfolio-card-entrance {
+  animation: cardEntrance 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.portfolio-card-hover {
+  animation: cardHoverLift 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.portfolio-image-hover {
+  animation: smoothImageZoom 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ==================== NAVIGATION ACTIVE STATE ==================== */
+
+.nav-active {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.nav-inactive {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==================== SMOOTH SECTION TRANSITIONS ==================== */
+
+@keyframes sectionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-fade-up {
+  animation: sectionFadeUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ==================== STAGGER ANIMATION DELAYS ==================== */
+
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+.stagger-4 { animation-delay: 400ms; }
+.stagger-5 { animation-delay: 500ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==================== INSTANT PAGE APPEARANCE (NO ANIMATIONS) ====================  */
